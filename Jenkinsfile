@@ -27,6 +27,7 @@
         stage('Deploy SonarQube') {
             steps {
                 sh """
+                CHART_VERSION=$(helm search repo sonarqube/sonarqube -o json | jq -r '.[0].version')
                 helm upgrade --install sonarqube sonarqube/sonarqube \
                     --version ${HELM_CHART_VERSION} \
                     --namespace sonarqube \
