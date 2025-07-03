@@ -1,0 +1,17 @@
+ # sonarqube-values.yaml
+service:
+  type: ClusterIP
+  externalPort: 9000
+
+persistence:
+  enabled: true
+  storageClass: gp2
+  size: 10Gi
+
+postgresql:
+  enabled: true
+  persistence:
+    size: 10Gi
+
+ingress:
+  enabled: false  # We'll use separate Ingress file
