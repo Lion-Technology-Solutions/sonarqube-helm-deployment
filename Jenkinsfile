@@ -27,12 +27,12 @@
         stage('Deploy SonarQube') {
             steps {
                 sh """
-                CHART_VERSION=$(helm search repo sonarqube/sonarqube -o json | jq -r '.[0].version')
+               
                 helm upgrade --install sonarqube sonarqube/sonarqube \
                     --version ${HELM_CHART_VERSION} \
                     --namespace sonarqube \
                     --create-namespace \
-                    --version '~8' \
+                
                     --set persistence.enabled=true \
                     --set persistence.storageClass=gp2 \
                     --set service.type=ClusterIP \
