@@ -4,7 +4,7 @@
         CLUSTER_NAME = "prod"
         AWS_REGION = "us-east-2"
         SONARQUBE_DOMAIN = "sonar.demosapps.com"
-        HELM_CHART_VERSION = "9.9.0"  //# Check latest: https://artifacthub.io/packages/helm/sonarqube/sonarqube
+        HELM_CHART_VERSION = ">=8.0.0 && <= 9.0.0"  //# Check latest: https://artifacthub.io/packages/helm/sonarqube/sonarqube
     }
     stages {
         stage('Configure AWS & EKS') {
