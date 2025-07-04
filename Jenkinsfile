@@ -24,22 +24,22 @@
                 """
             }
         }
-    stage('Deploy SonarQube') {
-    steps {
-        script {
-            sh """
-            helm upgrade --install sonarqube sonarqube/sonarqube \\
-                --version ${HELM_CHART_VERSION} \\
-                --namespace sonarqube \\
-                --create-namespace \\
-                --set persistence.enabled=true \\
-                --set persistence.storageClass=gp2 \\
-                --set service.type=ClusterIP \\
-                -f sonarqube-values.yaml
-            """
+        stage('Deploy SonarQube') {
+            steps {
+                sh """
+               
+                helm upgrade --install sonarqube sonarqube/sonarqube \
+                    --version ${HELM_CHART_VERSION} \
+                    --namespace sonarqube \
+                    --create-namespace \
+                
+                    --set persistence.enabled=true \
+                    --set persistence.storageClass=gp2 \
+                    --set service.type=ClusterIP \
+                    -f sonarqube-values.yaml
+                """
+            }
         }
-    }
-}
         stage('Configure Ingress') {
             steps {
                 sh """
